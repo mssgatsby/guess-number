@@ -1,53 +1,32 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Number Guessing Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Guess My Number!</title>
   </head>
   <body>
-    <h1>Number Guessing Game</h1>
-    <p>
-      I have selected a random number between 1 and 100. You have 5 attempts to
-      guess it.
-    </p>
-    <input type="number" id="guess" placeholder="Enter your guess" />
-    <button onclick="checkGuess()">Submit</button>
-    <p id="message"></p>
-
-    <script>
-      const secretNumber = Math.floor(Math.random() * 100) + 1;
-      let attempts = 5;
-
-      function checkGuess() {
-        const guessInput = document.getElementById("guess");
-        const message = document.getElementById("message");
-        const guess = parseInt(guessInput.value);
-
-        if (isNaN(guess)) {
-          message.textContent = "Invalid input. Please enter a valid number.";
-          return;
-        }
-
-        if (guess === secretNumber) {
-          message.textContent =
-            "Congratulations! You guessed the correct number!";
-          message.style.color = "green";
-          guessInput.disabled = true;
-        } else if (guess < secretNumber) {
-          message.textContent = "Try a higher number.";
-          message.style.color = "red";
-        } else {
-          message.textContent = "Try a lower number.";
-          message.style.color = "red";
-        }
-
-        attempts--;
-        if (attempts === 0) {
-          message.textContent = `Sorry, you're out of attempts. The correct number was ${secretNumber}.`;
-          message.style.color = "red";
-          guessInput.disabled = true;
-        }
-      }
-    </script>
+    <header>
+      <h1>Guess My Number!</h1>
+      <p class="between">(Between 1 and 20)</p>
+      <button class="btn again">Again!</button>
+      <div class="number">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <input type="number" class="guess" />
+        <button class="btn check">Check!</button>
+      </section>
+      <section class="right">
+        <p class="message">Start guessing...</p>
+        <p class="label-score">💯 Score: <span class="score">20</span></p>
+        <p class="label-highscore">
+          🥇 Highscore: <span class="highscore">0</span>
+        </p>
+      </section>
+    </main>
+    <script src="script.js"></script>
   </body>
 </html>
